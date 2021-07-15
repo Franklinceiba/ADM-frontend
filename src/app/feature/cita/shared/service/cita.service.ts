@@ -17,9 +17,18 @@ export class CitaService {
     return this.http.doGet<Cita[]>(`${environment.endpoint}/citas/${id}`, this.http.optsName('Listar Citas por id'));
   }
 
+  public consultarFecha(fecha: string) {
+    return this.http.doGet<Cita[]>(`${environment.endpoint}/citas/${fecha}`, this.http.optsName('Listar Citas por fecha'));
+  }
+
   public guardar(cita: Cita) {
     return this.http.doPost<Cita, boolean>(`${environment.endpoint}/citas`, cita,
-                                                this.http.optsName('Crear/Actualizar Cita'));
+                                                this.http.optsName('Crear Cita'));
+  }
+
+  public actualizar(cita: Cita, id: number) {
+    return this.http.doPut<Cita, boolean>(`${environment.endpoint}/citas/${id}`, cita,
+                                                this.http.optsName('Actualizar Cita'));
   }
 
   public eliminar(id: number) {

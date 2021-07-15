@@ -14,12 +14,21 @@ export class PersonaService {
   }
 
   public consultarId(id: string) {
-    return this.http.doGet<Persona[]>(`${environment.endpoint}/personas/${id}`, this.http.optsName('Listar Personas por id'));
+    return this.http.doGet<Persona[]>(`${environment.endpoint}/personas/id/${id}`, this.http.optsName('Listar Personas por id'));
+  }
+
+  public consultarDocumento(documento: string) {
+    return this.http.doGet<Persona[]>(`${environment.endpoint}/personas/documento/${documento}`, this.http.optsName('Listar Personas por documento'));
   }
 
   public guardar(persona: Persona) {
     return this.http.doPost<Persona, boolean>(`${environment.endpoint}/personas`, persona,
-                                                this.http.optsName('Crear/Actualizar Persona'));
+                                                this.http.optsName('Crear Persona'));
+  }
+
+  public actualizar(persona: Persona,id: number) {
+    return this.http.doPut<Persona, boolean>(`${environment.endpoint}/personas/${id}`, persona,
+                                                this.http.optsName('Actualizar Persona'));
   }
 
   public eliminar(id: number) {

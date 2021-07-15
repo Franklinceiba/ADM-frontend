@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PersonaService } from '@persona/shared/service/persona.service';
-import { Persona } from '@persona/shared/model/persona';
 import { Router } from '@angular/router';
+import { Persona } from '@persona/shared/model/persona';
+import { PersonaService } from '@persona/shared/service/persona.service';
 
 @Component({
-  selector: 'app-crear-persona',
-  templateUrl: './crear-persona.component.html',
-  styleUrls: ['./crear-persona.component.css']
+  selector: 'app-actualizar-persona',
+  templateUrl: './actualizar-persona.component.html',
+  styleUrls: ['./actualizar-persona.component.css']
 })
-export class CrearPersonaComponent implements OnInit {
+export class ActualizarPersonaComponent implements OnInit {
   persona: Persona;
   fechaActual: any;
   personaForm: FormGroup;
@@ -18,19 +18,31 @@ export class CrearPersonaComponent implements OnInit {
   mensajeAlertaCita: string;
 
   constructor(private datePipe: DatePipe, private router: Router, protected personasServices: PersonaService) {
-   }
+    const { state } = this.router.getCurrentNavigation().extras;
 
-  get fechaActualString(){
+    if (!state) {
+      this.router.navigate(['/persona/lista']);
+    }
+
+    this.persona = state.persona;
+  }
+
+   get fechaActualString(){
     return this.datePipe.transform(this.fechaActual, 'yyyy-MM-dd');
   }
 
-  ngOnInit(): void {
+   ngOnInit(): void {
     console.log(this.persona);
     this.fechaActual = new Date();
     this.construirFormularioPersona();
+    this.cargarDatosPersona(this.persona);
   }
 
-  registrarPersona(){
+  cargarDatosPersona(persona){
+    this.personaForm.patchValue(persona);
+  }
+
+  actualizarPersona(){
     this.mostrarMensajeAlerta = false;
     this.mensajeAlertaCita = '';
     if (this.personaForm.invalid){
@@ -40,7 +52,7 @@ export class CrearPersonaComponent implements OnInit {
       return;
     }
     this.personaForm.get('fechaNacimiento').setValue(this.datePipe.transform(this.personaForm.get('fechaNacimiento').value, 'yyyy-MM-dd'));
-    this.personasServices.guardar(this.personaForm.value).subscribe(json => {
+    this.personasServices.actualizar(this.personaForm.value, this.persona.id).subscribe(json => {
       console.log(json);
       this.router.navigate(['/persona/listar']);
     }, error =>{

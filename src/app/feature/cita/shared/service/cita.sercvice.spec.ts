@@ -10,7 +10,7 @@ import { HttpResponse } from '@angular/common/http';
 describe('CitaService', () => {
   let httpMock: HttpTestingController;
   let service: CitaService;
-  const apiEndpointCitaConsulta = `${environment.endpoint}/tiposFamilia`;
+  const apiEndpointCitaConsulta = `${environment.endpoint}/citas`;
   const apiEndpointCitas = `${environment.endpoint}/citas`;
 
   beforeEach(() => {
@@ -51,7 +51,7 @@ describe('CitaService', () => {
   });
 
   it('deberia eliminar un cita', () => {
-    const dummyCita = new Cita(1, 'cc', '1234567890', 'franklin', 'vasquez', '2021-07-07', '3166045344', 'franklin@gmail.com');
+    const dummyCita = new Cita(1, 'dolor de estomago', '2021-07-07', '08:30', 30000, 1);
     service.eliminar(dummyCita.id).subscribe((respuesta) => {
       expect(respuesta).toEqual(true);
     });

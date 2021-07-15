@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ActualizarPersonaComponent } from './components/actualizar-persona/actualizar-persona.component';
 import { CrearPersonaComponent } from './components/crear-persona/crear-persona.component';
 import { ListarPersonaComponent } from './components/listar-persona/listar-persona.component';
-import { BorrarPersonaComponent } from './components/borrar-persona/borrar-persona.component';
 import { PersonaComponent } from './components/persona/persona.component';
 
 
@@ -16,12 +16,12 @@ const routes: Routes = [
         component: CrearPersonaComponent
       },
       {
-        path: 'listar',
-        component: ListarPersonaComponent
+        path: 'actualizar',
+        component: ActualizarPersonaComponent
       },
       {
-        path: 'borrar',
-        component: BorrarPersonaComponent
+        path: 'listar',
+        component: ListarPersonaComponent
       }
     ]
   }

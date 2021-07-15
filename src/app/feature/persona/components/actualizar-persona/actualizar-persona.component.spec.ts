@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BorrarPersonaComponent } from './borrar-persona.component';
+import { ActualizarPersonaComponent } from './actualizar-persona.component';
 
-describe('BorrarPersonaComponent', () => {
-  let component: BorrarPersonaComponent;
-  let fixture: ComponentFixture<BorrarPersonaComponent>;
+describe('ActualizarPersonaComponent', () => {
+  let component: ActualizarPersonaComponent;
+  let fixture: ComponentFixture<ActualizarPersonaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BorrarPersonaComponent ]
+      declarations: [ ActualizarPersonaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BorrarPersonaComponent);
+    fixture = TestBed.createComponent(ActualizarPersonaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -6,19 +6,25 @@ import { Cita } from '../../shared/model/cita';
 import { CitaService } from '../../shared/service/cita.service';
 
 @Component({
-  selector: 'app-crear-cita',
-  templateUrl: './crear-cita.component.html',
-  styleUrls: ['./crear-cita.component.css']
+  selector: 'app-actualizar-cita',
+  templateUrl: './actualizar-cita.component.html',
+  styleUrls: ['./actualizar-cita.component.css']
 })
-export class CrearCitaComponent implements OnInit {
+export class ActualizarCitaComponent implements OnInit {
   cita: Cita;
   fechaActual: any;
   citaForm: FormGroup;
   mostrarMensajeAlerta: boolean = false;
   mensajeAlertaCita: string;
+  constructor(private datePipe: DatePipe, private router: Router, protected citaServices: CitaService) { 
+    const { state } = this.router.getCurrentNavigation().extras;
 
-  constructor(private datePipe: DatePipe, private router: Router, protected citaServices: CitaService) { }
+    if (!state) {
+      this.router.navigate(['/cita/lista']);
+    }
 
+    this.cita = state.cita;
+  }
   get fechaActualString(){
     return this.datePipe.transform(this.fechaActual, 'yyyy-MM-dd');
   }
@@ -26,9 +32,14 @@ export class CrearCitaComponent implements OnInit {
   ngOnInit(): void {
     this.fechaActual = new Date();
     this.construirFormularioCita();
+    this.cargarDatosCita(this.cita);
   }
 
-  registrarCita(){
+  cargarDatosCita(cita){
+    this.citaForm.patchValue(cita);
+  }
+
+  actualizarCita(){
     this.mostrarMensajeAlerta = false;
     this.mensajeAlertaCita = '';
     if (this.citaForm.invalid){
@@ -37,7 +48,7 @@ export class CrearCitaComponent implements OnInit {
       this.mensajeAlertaCita = 'La cita debe contener la totalidad de los datos';
       return;
     }
-    this.citaServices.guardar(this.citaForm.value).subscribe(json => {
+    this.citaServices.actualizar(this.citaForm.value, this.cita.id).subscribe(json => {
       console.log(json);
       this.router.navigate(['/cita/listar']);
     }, error =>{
@@ -56,4 +67,5 @@ export class CrearCitaComponent implements OnInit {
       idPersona: new FormControl('', [Validators.required])
     });
   }
+
 }

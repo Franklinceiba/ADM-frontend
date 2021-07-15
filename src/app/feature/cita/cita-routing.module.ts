@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CrearCitaComponent } from './components/crear-cita/crear-cita.component';
 import { ListarCitaComponent } from './components/listar-cita/listar-cita.component';
-import { BorrarCitaComponent } from './components/borrar-cita/borrar-cita.component';
 import { CitaComponent } from './components/cita/cita.component';
+import { ActualizarCitaComponent } from './components/actualizar-cita/actualizar-cita.component';
 
 
 const routes: Routes = [
@@ -16,12 +16,12 @@ const routes: Routes = [
         component: CrearCitaComponent
       },
       {
-        path: 'listar',
-        component: ListarCitaComponent
+        path: 'actualizar',
+        component: ActualizarCitaComponent
       },
       {
-        path: 'borrar',
-        component: BorrarCitaComponent
+        path: 'listar',
+        component: ListarCitaComponent
       }
     ]
   }

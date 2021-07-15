@@ -1,3 +1,14 @@
+<div>
+    <form class="border  p-3 form" [formGroup]="filtroForm">
+      <div class="form-group">
+        <label for="fecha">Fecha</label>
+        <input validar type="date" id="fecha"  class="form-control" formControlName="fecha">
+      </div>
+    <button style="margin-top: 25px;" class="btn btn-primary" type="submit" (click)="filtrarFecha()" >filtrar por fecha</button>
+    <button style="margin-top: 25px; margin-left: 10px;" class="btn btn-danger" type="submit" (click)="eliminarFiltro()" >Eliminar filtro</button>
+
+  </form>
+</div>
 <p>Listado de citas</p>
 
 <table class="table table-bordered table-striped">
@@ -18,7 +29,7 @@
       <td>{{ item.hora }}</td>
       <td>{{ item.valor }}</td>
       <td>
-        <button type="button" class="btn btn-success" (click)= "actualizarCita()" style="margin-right: 10px; margin-left: 10px;">Actualizar
+        <button type="button" class="btn btn-success" (click)= "actualizarCita(item)" style="margin-right: 10px; margin-left: 10px;">Actualizar
         </button>
         <button type="button" class="btn btn-danger" (click)="eliminarCita(item.id)">Eliminar</button>
       </td>
