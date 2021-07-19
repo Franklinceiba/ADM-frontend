@@ -13,9 +13,9 @@ import { CitaService } from '../../shared/service/cita.service';
 export class ListarCitaComponent implements OnInit {
   public listaCitas: Observable<Cita[]>;
   filtroForm: FormGroup;
-  validarFiltro: boolean = false;
+  validarFiltro = false;
 
-  constructor(protected citaService: CitaService, private router:Router) { }
+  constructor(protected citaService: CitaService, private router: Router) { }
 
   ngOnInit(): void {
     this.inizializarTabla();
@@ -33,12 +33,10 @@ export class ListarCitaComponent implements OnInit {
   }
 
   actualizarCita(cita: Cita){
-    this.router.navigate(['/cita/actualizar'], {state : { cita: cita }});
+    this.router.navigate(['/cita/actualizar'], {state : { cita }});
   }
 
   filtrarFecha(){
-    console.log(this.filtroForm.get('fecha').value);
-    console.log('entro');
     this.validarFiltro = true;
     this.listaCitas = this.citaService.consultarFecha(this.filtroForm.get('fecha').value);
   }

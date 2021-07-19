@@ -36,6 +36,9 @@
       "@persona/*": [
         "src/app/feature/persona/*"
       ],
+      "@cita/*": [
+        "src/app/feature/cita/*"
+      ],
       "@shared/*": [
         "src/app/shared/*"
       ]

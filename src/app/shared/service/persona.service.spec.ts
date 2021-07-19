@@ -4,7 +4,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { PersonaService } from './persona.service';
 import { environment } from 'src/environments/environment';
 import { HttpService } from 'src/app/core/services/http.service';
-import { Persona } from '../model/persona';
+import { Persona } from '../../../../shared/model/persona';
 import { HttpResponse } from '@angular/common/http';
 
 describe('PersonaService', () => {

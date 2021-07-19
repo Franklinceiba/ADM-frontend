@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { MenuItem } from '@core/modelo/menu-item';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'app-base';
@@ -14,8 +13,5 @@ export class AppComponent {
     { url: '/producto', nombre: 'producto' },
     { url: '/persona', nombre: 'persona' },
     { url: '/cita', nombre: 'cita' }
-    
   ];
-
-  
 }

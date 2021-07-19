@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Persona } from '@persona/shared/model/persona';
-import { PersonaService } from '@persona/shared/service/persona.service';
+import { Persona } from '@shared/model/persona';
+import { PersonaService } from '@shared/service/persona.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -14,9 +14,11 @@ export class ListarPersonaComponent implements OnInit {
   public listaPersonas: Observable<Persona[]>;
   public persona: Observable<Persona[]>;
   filtroForm: FormGroup;
-  validarFiltro: boolean = false;
+  validarFiltro = false;
+  mostrarMensajeAlerta = false;
+  mensajeAlertaEliminarPersona: string;
 
-  constructor(protected personaService: PersonaService, private router:Router) { }
+  constructor(protected personaService: PersonaService, private router: Router) { }
 
   ngOnInit(): void {
     this.inizializarTabla();
@@ -24,7 +26,13 @@ export class ListarPersonaComponent implements OnInit {
   }
 
   eliminarPersona(id: number) {
-    this.personaService.eliminar(id).subscribe();
+    this.personaService.eliminar(id).subscribe(
+      () => { },
+      (error) => {
+        this.mostrarMensajeAlerta = true;
+        this.mensajeAlertaEliminarPersona = error.error.mensaje;
+      }
+    );
     if (this.validarFiltro){
       this.filtrarDocumento();
     }else {
@@ -33,12 +41,10 @@ export class ListarPersonaComponent implements OnInit {
   }
 
   actualizarPersona(persona: Persona){
-    this.router.navigate(['/persona/actualizar'],{state : { persona: persona }});
+    this.router.navigate(['/persona/actualizar'], {state : { persona }});
   }
 
   filtrarDocumento(){
-    console.log(this.filtroForm.get('documento').value);
-    console.log('documento');
     this.validarFiltro = true;
     this.listaPersonas = this.personaService.consultarDocumento(this.filtroForm.get('documento').value);
   }

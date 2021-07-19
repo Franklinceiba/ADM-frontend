@@ -10,15 +10,34 @@ export class PersonaPage {
     private inputFechaNacimientoPersona = element(by.id('fechaNacimiento'));
     private inputCelularPersona = element(by.id('celular'));
     private inputEmailPersona = element(by.id('email'));
-    private buttonRegistrarPersona = element(by.xpath('//*[@id="buttonRegistrarPersona"]'));
-    private buttonActualizarFormPersona = element(by.xpath('//*[@id="buttonActualizarPersona"]'));
-    private listaPersonas = element.all(by.xpath('/html/body/app-root/app-persona/app-listar-persona/table/tbody/tr'));
+    private buttonRegistrarPersona = element(
+        by.xpath('//*[@id="buttonRegistrarPersona"]')
+    );
+    private buttonActualizarFormPersona = element(
+        by.xpath('//*[@id="buttonActualizarPersona"]')
+    );
+    private listaPersonas = element.all(
+        by.xpath(
+            '/html/body/app-root/app-persona/app-listar-persona/table/tbody/tr'
+        )
+    );
     // tslint:disable-next-line: max-line-length
-    private buttonEliminarPersona = element(by.xpath('/html/body/app-root/app-persona/app-listar-persona/table/tbody/tr[1]/td[1]/button[2]'));
-    private buttonActualizarPersona = element(by.xpath('/html/body/app-root/app-persona/app-listar-persona/table/tbody/tr[1]/td[1]/button[1]'));
-    private campoNombrePersona = element(by.xpath('/html/body/app-root/app-persona/app-listar-persona/table/tbody/tr[1]/td[4]'));
-    
-    
+    private buttonEliminarPersona = element(
+        by.xpath(
+            '/html/body/app-root/app-persona/app-listar-persona/table/tbody/tr[1]/td[8]/button[2]'
+        )
+    );
+    private buttonActualizarPersona = element(
+        by.xpath(
+            '/html/body/app-root/app-persona/app-listar-persona/table/tbody/tr[1]/td[8]/button[1]'
+        )
+    );
+    private campoNombrePersona = element(
+        by.xpath(
+            '/html/body/app-root/app-persona/app-listar-persona/table/tbody/tr[1]/td[3]'
+        )
+    );
+
     async clickBotonCrearPersonas() {
         await this.linkCrearPersona.click();
     }

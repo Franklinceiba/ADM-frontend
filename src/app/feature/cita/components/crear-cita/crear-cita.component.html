@@ -33,15 +33,18 @@
             </select>
           </div>
         <div class="form-group">
-            <label for="isPersona">id de la persona</label>
-            <input validar type="text" class="form-control" id="idPersona" formControlName="idPersona" placeholder="">
+          <label for="idPersona">Seleccione el id de la persona</label>
+          <select validar class="form-control" id="idPersona" formControlName="idPersona">
+            <option></option>
+            <option *ngFor="let item of listaPersonas  | async" value="{{item.id}}"> {{item.documento}} ({{item.nombre}} {{item.apellido}})</option>
+          </select>
         </div>
         <div *ngIf="mostrarMensajeAlerta" style="margin-top: 25px;">
           <div class="alert alert-danger" role="alert">
             {{mensajeAlertaCita}}
           </div>
         </div>
-        <button style="margin-top: 25px;" class="btn btn-primary" type="submit" (click)="registrarCita()" >Registar Cita </button>
+        <button style="margin-top: 25px;" class="btn btn-primary" type="submit" id="buttonRegistrarCita" (click)="registrarCita()" >Registar Cita </button>
       </form>
     </div>
 

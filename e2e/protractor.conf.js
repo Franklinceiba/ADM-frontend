@@ -3,6 +3,7 @@
 // https://github.com/angular/protractor/blob/master/lib/config.ts
 
 const { SpecReporter } = require('jasmine-spec-reporter');
+const { browser } = require('protractor');
 var HtmlReporter = require('protractor-beautiful-reporter');
 
 /**
@@ -14,7 +15,13 @@ exports.config = {
     './src/**/*.e2e-spec.ts'
   ],
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'chrome',
+    'chromeOptions': {
+      'args': [
+        '--window-size=1600,1000',
+        '--headless'
+      ]
+    }
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',

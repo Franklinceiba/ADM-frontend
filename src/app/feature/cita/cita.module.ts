@@ -10,19 +10,14 @@ import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActualizarCitaComponent } from './components/actualizar-cita/actualizar-cita.component';
 
-
 @NgModule({
   declarations: [
     CrearCitaComponent,
     ListarCitaComponent,
     CitaComponent,
-    ActualizarCitaComponent
+    ActualizarCitaComponent,
   ],
-  imports: [
-    CitaRoutingModule,
-    SharedModule,
-    FormsModule
-  ],
-  providers: [CitaService, DatePipe]
+  imports: [CitaRoutingModule, SharedModule, FormsModule],
+  providers: [CitaService, DatePipe],
 })
-export class CitaModule { }
+export class CitaModule {}

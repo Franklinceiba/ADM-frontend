@@ -19,26 +19,26 @@ describe('workspace-project Persona', () => {
     });
 
     it('Deberia crear persona', async () => {
-        const TIPO_DOCUMENTO_PRODUCTO = 'C.C';
-        const DOCUMENTO_PRODUCTO = '21';
-        const NOMBRE_PRODUCTO = 'luis';
-        const APELLIDO_PRODUCTO = 'pineda';
-        const FECHA_NACIMIENTO_PRODUCTO = '07-07-2021';
-        const CELULAR_PRODUCTO = '3135678567';
-        const EMAIL_PRODUCTO = 'luis@gmail.com';
+        const TIPO_DOCUMENTO_PERSONA = 'C.C';
+        const DOCUMENTO_PERSONA = '37';
+        const NOMBRE_PERSONA = 'luis';
+        const APELLIDO_PERSONA = 'pineda';
+        const FECHA_NACIMIENTO_PERSONA = '07-07-2021';
+        const CELULAR_PERSONA = '3135678567';
+        const EMAIL_PERSONA = 'luis@gmail.com';
 
         page.navigateTo();
         navBar.clickBotonPersonas();
         persona.clickBotonListarPersonas();
         expect(CANTIDAD_VARIABLES_ANTES).toBe(persona.contarPersonas());
         persona.clickBotonCrearPersonas();
-        persona.ingresarTipoDocumento(TIPO_DOCUMENTO_PRODUCTO);
-        persona.ingresarDocumento(DOCUMENTO_PRODUCTO);
-        persona.ingresarNombre(NOMBRE_PRODUCTO);
-        persona.ingresarApellido(APELLIDO_PRODUCTO);
-        persona.ingresarFechaNacimiento(FECHA_NACIMIENTO_PRODUCTO);
-        persona.ingresarCelular(CELULAR_PRODUCTO);
-        persona.ingresarEmail(EMAIL_PRODUCTO);
+        persona.ingresarTipoDocumento(TIPO_DOCUMENTO_PERSONA);
+        persona.ingresarDocumento(DOCUMENTO_PERSONA);
+        persona.ingresarNombre(NOMBRE_PERSONA);
+        persona.ingresarApellido(APELLIDO_PERSONA);
+        persona.ingresarFechaNacimiento(FECHA_NACIMIENTO_PERSONA);
+        persona.ingresarCelular(CELULAR_PERSONA);
+        persona.ingresarEmail(EMAIL_PERSONA);
         persona.clickBotonRegistrarPersona();
 
         persona.clickBotonListarPersonas();
@@ -71,7 +71,7 @@ describe('workspace-project Persona', () => {
     });
 
     it('Deberia actualizar personas', () => {
-        const NOMBRE_PRODUCTO = 'franklin';
+        const NOMBRE_PERSONA = 'franklin';
 
         page.navigateTo();
         navBar.clickBotonPersonas();
@@ -82,12 +82,12 @@ describe('workspace-project Persona', () => {
         persona.clickBotonActualizarPersona();
 
         persona.limpiarNombre();
-        persona.ingresarNombre(NOMBRE_PRODUCTO);
+        persona.ingresarNombre(NOMBRE_PERSONA);
         persona.clickBotonActualizarFormPersona();
 
         navBar.clickBotonPersonas();
         persona.clickBotonListarPersonas();
-        expect(persona.getNombrePersonas()).toEqual(NOMBRE_PRODUCTO);
+        expect(persona.getNombrePersonas()).toEqual(NOMBRE_PERSONA);
         expect(CANTIDAD_VARIABLES_ANTES).toBe(persona.contarPersonas());
     });
 });

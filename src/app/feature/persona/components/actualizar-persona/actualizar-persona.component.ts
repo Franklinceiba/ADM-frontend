@@ -2,22 +2,28 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Persona } from '@persona/shared/model/persona';
-import { PersonaService } from '@persona/shared/service/persona.service';
+import { Persona } from '@shared/model/persona';
+import { PersonaService } from '@shared/service/persona.service';
 
 @Component({
   selector: 'app-actualizar-persona',
   templateUrl: './actualizar-persona.component.html',
-  styleUrls: ['./actualizar-persona.component.css']
+  styleUrls: ['./actualizar-persona.component.css'],
 })
 export class ActualizarPersonaComponent implements OnInit {
+  private MENSAJE_REQUERIDO = 'La cita debe contener la totalidad de los datos';
+
   persona: Persona;
   fechaActual: any;
   personaForm: FormGroup;
-  mostrarMensajeAlerta: boolean = false;
+  mostrarMensajeAlerta = false;
   mensajeAlertaCita: string;
 
-  constructor(private datePipe: DatePipe, private router: Router, protected personasServices: PersonaService) {
+  constructor(
+    private datePipe: DatePipe,
+    private router: Router,
+    protected personasServices: PersonaService
+  ) {
     const { state } = this.router.getCurrentNavigation().extras;
 
     if (!state) {
@@ -27,41 +33,47 @@ export class ActualizarPersonaComponent implements OnInit {
     this.persona = state.persona;
   }
 
-   get fechaActualString(){
+  get fechaActualString() {
     return this.datePipe.transform(this.fechaActual, 'yyyy-MM-dd');
   }
 
-   ngOnInit(): void {
-    console.log(this.persona);
+  ngOnInit(): void {
     this.fechaActual = new Date();
     this.construirFormularioPersona();
     this.cargarDatosPersona(this.persona);
   }
 
-  cargarDatosPersona(persona){
+  cargarDatosPersona(persona) {
     this.personaForm.patchValue(persona);
   }
 
-  actualizarPersona(){
+  actualizarPersona() {
     this.mostrarMensajeAlerta = false;
     this.mensajeAlertaCita = '';
-    if (this.personaForm.invalid){
-      console.log('faltan datos');
+    if (this.personaForm.invalid) {
       this.mostrarMensajeAlerta = true;
-      this.mensajeAlertaCita = 'La cita debe contener la totalidad de los datos';
+      this.mensajeAlertaCita = this.MENSAJE_REQUERIDO;
       return;
     }
-    this.personaForm.get('fechaNacimiento').setValue(this.datePipe.transform(this.personaForm.get('fechaNacimiento').value, 'yyyy-MM-dd'));
-    this.personasServices.actualizar(this.personaForm.value, this.persona.id).subscribe(json => {
-      console.log(json);
-      this.router.navigate(['/persona/listar']);
-    }, error =>{
-      console.log(error.error.mensaje);
-      this.mostrarMensajeAlerta = true;
-      this.mensajeAlertaCita = error.error.mensaje;
-    }
-    );
-    console.log(this.personaForm.value);
+    this.personaForm
+      .get('fechaNacimiento')
+      .setValue(
+        this.datePipe.transform(
+          this.personaForm.get('fechaNacimiento').value,
+          'yyyy-MM-dd'
+        )
+      );
+    this.personasServices
+      .actualizar(this.personaForm.value, this.persona.id)
+      .subscribe(
+        () => {
+          this.router.navigate(['/persona/listar']);
+        },
+        (error) => {
+          this.mostrarMensajeAlerta = true;
+          this.mensajeAlertaCita = error.error.mensaje;
+        }
+      );
   }
 
   private construirFormularioPersona() {
@@ -75,5 +87,4 @@ export class ActualizarPersonaComponent implements OnInit {
       email: new FormControl('', [Validators.required]),
     });
   }
-
 }

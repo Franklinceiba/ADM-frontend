@@ -7,7 +7,7 @@ import { Persona } from '../model/persona';
 @Injectable()
 export class PersonaService {
 
-  constructor(protected http: HttpService) {}
+  constructor(protected http: HttpService) { }
 
   public consultar() {
     return this.http.doGet<Persona[]>(`${environment.endpoint}/personas`, this.http.optsName('Listar Personas'));
@@ -23,16 +23,16 @@ export class PersonaService {
 
   public guardar(persona: Persona) {
     return this.http.doPost<Persona, boolean>(`${environment.endpoint}/personas`, persona,
-                                                this.http.optsName('Crear Persona'));
+      this.http.optsName('Crear Persona'));
   }
 
-  public actualizar(persona: Persona,id: number) {
+  public actualizar(persona: Persona, id: number) {
     return this.http.doPut<Persona, boolean>(`${environment.endpoint}/personas/${id}`, persona,
-                                                this.http.optsName('Actualizar Persona'));
+      this.http.optsName('Actualizar Persona'));
   }
 
   public eliminar(id: number) {
     return this.http.doDelete<boolean>(`${environment.endpoint}/personas/${id}`,
-                                                 this.http.optsName('eliminar personas'));
+      this.http.optsName('eliminar personas'));
   }
 }

@@ -1,0 +1,13 @@
+.centradoTitulo {
+  text-align: center;
+  padding: 8px;
+  font-size: xx-large;
+  color: blue;
+}
+.centrado {
+  text-align: center;
+  font-size: x-large;
+}
+.margen {
+  margin-top: 100px;
+}
