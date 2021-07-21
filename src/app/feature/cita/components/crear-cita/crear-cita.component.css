@@ -1,9 +1,13 @@
 .abs-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
-  .form {
-    width: 600px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.form {
+  width: 600px;
+}
+.margenes {
+  margin-top: 25px;
+  margin-bottom: 25PX;
+}

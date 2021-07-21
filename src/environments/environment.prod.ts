@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  endpoint: '/prospectos-vida'
+  port: 8080,
+  endpoint: '/consultoriofv'
 };

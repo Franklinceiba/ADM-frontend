@@ -20,7 +20,7 @@ describe('workspace-project Persona', () => {
 
     it('Deberia crear persona', async () => {
         const TIPO_DOCUMENTO_PERSONA = 'C.C';
-        const DOCUMENTO_PERSONA = '37';
+        const DOCUMENTO_PERSONA = '38';
         const NOMBRE_PERSONA = 'luis';
         const APELLIDO_PERSONA = 'pineda';
         const FECHA_NACIMIENTO_PERSONA = '07-07-2021';

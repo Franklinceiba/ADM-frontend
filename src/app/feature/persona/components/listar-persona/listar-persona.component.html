@@ -1,4 +1,4 @@
-<div *ngIf="mostrarMensajeAlerta" style="margin-top: 25px;">
+<div *ngIf="mostrarMensajeAlerta" class="botonPrimario">
   <div class="alert alert-danger" role="alert">
     {{mensajeAlertaEliminarPersona}}
   </div>
@@ -9,8 +9,8 @@
       <label for="documento">Documento</label>
       <input validar type="text" id="documento"  class="form-control" formControlName="documento">
     </div>
-  <button style="margin-top: 25px;" class="btn btn-primary" type="submit" (click)="filtrarDocumento()" >filtrar por documento</button>
-  <button style="margin-top: 25px; margin-left: 10px;" class="btn btn-danger" type="submit" (click)="eliminarFiltro()" >Eliminar filtro</button>
+  <button class="btn btn-primary botonPrimario" type="submit" (click)="filtrarDocumento()" >filtrar por documento</button>
+  <button class="btn btn-danger botonSecundario" type="submit" (click)="eliminarFiltro()" >Eliminar filtro</button>
 
 </form>
 </div>
@@ -41,7 +41,7 @@
       <td>{{ item.celular }}</td>
       <td>{{ item.email }}</td>
       <td>
-        <button type="button" class="btn btn-success" (click)= "actualizarPersona(item)" style="margin-right: 10px; margin-left: 10px;">Actualizar
+        <button type="button" class="btn btn-success cajaTexto" (click)= "actualizarPersona(item)">Actualizar
         </button>
         <button type="button" class="btn btn-danger" (click)="eliminarPersona(item.id)">Eliminar</button>
       </td>

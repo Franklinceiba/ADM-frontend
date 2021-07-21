@@ -1,6 +1,6 @@
 <div class="abs-center">  
 <form class="border  p-3 form" [formGroup]="personaForm">
-    <div style="margin-bottom: 25px;">
+    <div class="margenes">
         Registrar Persona
     </div>
     <div class="form-group">
@@ -35,13 +35,13 @@
         <label for="exampleInputEmail1">Email</label>
         <input validar type="email" class="form-control" id="email" aria-describedby="emailHelp" formControlName="email" placeholder="">
     </div>
-    <div *ngIf="mostrarMensajeAlerta" style="margin-top: 25px;">
+    <div *ngIf="mostrarMensajeAlerta" class="margenes">
       <div class="alert alert-danger" role="alert">
         {{mensajeAlertaCita}}
       </div>
     </div>
     <div>
-      <button style="margin-top: 25px;" class="btn btn-primary" type="button" id="buttonRegistrarPersona" (click)="registrarPersona()" >Registar Persona
+      <button class="btn btn-primary margenes" type="button" id="buttonRegistrarPersona" (click)="registrarPersona()" >Registar Persona
       </button>
     </div>
   </form>

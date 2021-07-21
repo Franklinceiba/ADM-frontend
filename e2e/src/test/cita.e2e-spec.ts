@@ -21,7 +21,7 @@ describe('workspace-project Cita', () => {
     it('Deberia crear cita', async () => {
         const DESCRIPCION_CITA = 'dolor de cabeza';
         const FECHA_CITA = '07-08-2021';
-        const HORA_CITA = '11:00:00';
+        const HORA_CITA = '11:30:00';
         const ID_PERSONA_CITA = 37;
 
         page.navigateTo();

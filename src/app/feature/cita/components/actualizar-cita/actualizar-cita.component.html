@@ -1,6 +1,6 @@
 <div class="abs-center">  
     <form class="border  p-3 form" [formGroup]="citaForm">
-        <div style="margin-bottom: 25px;">
+        <div class="margenes">
             Actualizar Cita
         </div>
         <div class="row">
@@ -39,12 +39,12 @@
               <option *ngFor="let item of listaPersonas  | async" value="{{item.id}}"> {{item.documento}} ({{item.nombre}} {{item.apellido}})</option>
             </select>
           </div>
-        <div *ngIf="mostrarMensajeAlerta" style="margin-top: 25px;">
+        <div *ngIf="mostrarMensajeAlerta" class="margenes">
           <div class="alert alert-danger" role="alert">
             {{mensajeAlertaCita}}
           </div>
         </div>
-        <button style="margin-top: 25px;" class="btn btn-primary" type="submit" id="buttonActualizarCita" (click)="actualizarCita()" >Actualizar Cita </button>
+        <button class="btn btn-primary margenes" type="submit" id="buttonActualizarCita" (click)="actualizarCita()" >Actualizar Cita </button>
       </form>
     </div>
 

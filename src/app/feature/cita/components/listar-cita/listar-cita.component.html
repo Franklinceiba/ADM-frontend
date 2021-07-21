@@ -4,8 +4,8 @@
         <label for="fecha">Fecha</label>
         <input validar type="date" id="fecha"  class="form-control" formControlName="fecha">
       </div>
-    <button style="margin-top: 25px;" class="btn btn-primary" type="submit" (click)="filtrarFecha()" >filtrar por fecha</button>
-    <button style="margin-top: 25px; margin-left: 10px;" class="btn btn-danger" type="submit" (click)="eliminarFiltro()" >Eliminar filtro</button>
+    <button class="btn btn-primary botonPrimario" type="submit" (click)="filtrarFecha()" >filtrar por fecha</button>
+    <button class="btn btn-danger botonSecundario" type="submit" (click)="eliminarFiltro()" >Eliminar filtro</button>
 
   </form>
 </div>
@@ -30,7 +30,7 @@
       <td>{{ item.hora }}</td>
       <td>{{ item.valor }}</td>
       <td>
-        <button type="button" class="btn btn-success" (click)= "actualizarCita(item)" style="margin-right: 10px; margin-left: 10px;">Actualizar
+        <button type="button" class="btn btn-success cajaTexto" (click)= "actualizarCita(item)">Actualizar
         </button>
         <button type="button" class="btn btn-danger" (click)="eliminarCita(item.id)">Eliminar</button>
       </td>
