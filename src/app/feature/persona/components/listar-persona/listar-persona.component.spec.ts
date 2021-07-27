@@ -13,12 +13,13 @@ describe('ListarPersonaComponent', () => {
   let component: ListarPersonaComponent;
   let fixture: ComponentFixture<ListarPersonaComponent>;
   let personaService: PersonaService;
+  // tslint:disable-next-line: max-line-length
   const listaPersonas: Persona[] = [new Persona(1, 'C.C', '23123213', 'felipe', 'corzo', '2021-07-15', '3156378928', 'felipe@gmail.com'), new Persona(2, 'C.C', '665676756', 'juan', 'gutierrez', '2021-07-14', '3145678998', 'juan@gmail.com')];
 
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListarPersonaComponent ],
+      declarations: [ListarPersonaComponent],
       imports: [
         CommonModule,
         HttpClientModule,
@@ -28,7 +29,7 @@ describe('ListarPersonaComponent', () => {
       ],
       providers: [PersonaService, DatePipe, HttpService],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

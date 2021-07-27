@@ -6,9 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from '@home/home.component';
 import { CoreModule } from '@core/core.module';
 import { CookieService } from 'ngx-cookie-service';
-import { PersonaModule } from '@persona/persona.module';
-import { CitaModule } from '@cita/cita.module';
-
+import { HttpClientModule } from '@angular/common/http';
+import { PersonaService } from '@shared/service/persona.service';
 
 
 
@@ -21,11 +20,10 @@ import { CitaModule } from '@cita/cita.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PersonaModule,
-    CitaModule,
-    CoreModule
+    CoreModule,
+    HttpClientModule
   ],
-  providers: [CookieService],
+  providers: [CookieService, PersonaService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
